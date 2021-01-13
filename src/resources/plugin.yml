@@ -1,0 +1,11 @@
+name: RedUtils
+version: 0.1.0
+main: org.concordiacraft.redutils.main.RedUtils
+api-version: 1.13
+load: STARTUP
+authors:
+  - Theorenter
+  - Nicekita
+loadbefore:
+  - RedRealms
+  - RedItems
