@@ -1,6 +1,6 @@
 package org.concordiacraft.redutils.main.utils;
 
-import org.bukkit.plugin.Plugin;
+import org.concordiacraft.redutils.main.RedPlugin;
 import org.fusesource.jansi.Ansi;
 
 import java.util.logging.Level;
@@ -9,11 +9,13 @@ import java.util.logging.Level;
  * @author Theorenter
  * Universal logger for plugins of the RedProject family.
  */
-public class RedLog {
-    private final Plugin plugin;
+public final class RedLog {
+    private final RedPlugin plugin;
+    private final Boolean isDebug;
 
-    public RedLog(Plugin plugin) {
+    public RedLog(RedPlugin plugin) {
         this.plugin = plugin;
+        this.isDebug = plugin.isDebug();
     }
 
     public void showPluginTitle() {
@@ -54,12 +56,21 @@ public class RedLog {
      */
     public void error(String message, Exception e) { plugin.getLogger().log(Level.SEVERE, ASCIIRed + message, e); }
 
-    public void debug(Boolean isDebugMode, String message) {
-        if (isDebugMode)
+    /**
+     * Debug message output.
+     * @param message the contents of the message.
+     */
+    public void debug(String message) {
+        if (isDebug)
             plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message);
     }
-    public void debug(Boolean isDebugMode, String message, Exception e) {
-        if (isDebugMode)
+    /**
+     * Debug message output.
+     * @param message the contents of the message.
+     * @param e error exception
+     */
+    public void debug(String message, Exception e) {
+        if (isDebug)
             plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message, e);
     }
 

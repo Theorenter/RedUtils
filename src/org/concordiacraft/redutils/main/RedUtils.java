@@ -3,14 +3,14 @@ package org.concordiacraft.redutils.main;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.concordiacraft.redutils.main.utils.RedLog;
 
-public class RedUtils extends JavaPlugin {
+public class RedUtils extends JavaPlugin implements RedPlugin {
 
-    // fields
+    // Fields
     private static RedLog rLog;
 
     @Override
     public void onEnable() {
-        // creating a new log object
+        // Creating a new log
         rLog = new RedLog(this);
     }
 
@@ -18,8 +18,19 @@ public class RedUtils extends JavaPlugin {
     public void onDisable() {
 
     }
-    public static RedUtils getPlugin() {
+
+    @Override
+    public boolean isDebug() {
+        // TODO написать адекватное тело метода, которое извлекало бы значение из конфига.
+        return true;
+    }
+
+    @Override
+    public RedLog getRedLogger() {
+        return rLog;
+    }
+    public static RedPlugin getPlugin() {
         return RedUtils.getPlugin(RedUtils.class);
     }
-    public static RedLog getLog() { return rLog; }
+
 }
