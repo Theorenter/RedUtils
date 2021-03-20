@@ -12,6 +12,8 @@ public class RedUtils extends JavaPlugin implements RedPlugin {
     public void onEnable() {
         // Creating a new log
         rLog = new RedLog(this);
+
+        rLog.showPluginTitle();
     }
 
     @Override

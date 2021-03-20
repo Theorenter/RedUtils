@@ -6,6 +6,7 @@ import org.concordiacraft.redutils.main.RedPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * @author Theorenter
@@ -13,7 +14,7 @@ import java.io.IOException;
  */
 public abstract class ConfigAbstractSetup {
 
-    private final RedPlugin plugin;
+    private static RedPlugin plugin;
 
     // CustomConfig fields
     protected static File customFile;
@@ -29,14 +30,14 @@ public abstract class ConfigAbstractSetup {
      */
      protected ConfigAbstractSetup(RedPlugin plugin, String fullFileName) {
 
-        this.plugin = plugin;
+         ConfigAbstractSetup.plugin = plugin;
 
         // File Creation
         ConfigAbstractSetup.fullFileName = fullFileName;
 
         customFile = new File(plugin.getDataFolder(),  fullFileName);
         if (!customFile.exists()) {
-            plugin.getRedLogger().warning(fullFileName + " was not found. Create new ones.");
+            plugin.getLogger().severe(fullFileName + " was not found. Create new ones.");
             customFile.getParentFile().mkdirs();
             plugin.saveResource(fullFileName, false);
         }
@@ -45,7 +46,7 @@ public abstract class ConfigAbstractSetup {
         customConfig = YamlConfiguration.loadConfiguration(customFile);
     }
 
-    public void saveCustomConfig() {
+    public static void saveCustomConfig() {
         try {
             customConfig.save(customFile);
             plugin.getRedLogger().info(fullFileName + " has been saved successfully!");
@@ -54,12 +55,12 @@ public abstract class ConfigAbstractSetup {
         }
     }
 
-    public void reloadCustomConfig() {
+    public static void reloadCustomConfig() {
         customConfig = YamlConfiguration.loadConfiguration(customFile);
     }
 
     // Config Getter
-    public FileConfiguration getCustomConfig() {
+    public static FileConfiguration getCustomConfig() {
         return customConfig;
     }
 }
