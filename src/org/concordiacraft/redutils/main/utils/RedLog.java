@@ -40,21 +40,21 @@ public final class RedLog {
      * Error message output.
      * @param message the contents of the message.
      */
-    public void error(String message) { plugin.getLogger().log(Level.SEVERE, ASCIIRed + message); }
+    public void error(String message) { plugin.getLogger().log(Level.SEVERE, ASCIIRed + message + ASCIIReset); }
 
     /**
      * Warning message output.
      * @param message the contents of the message.
      * @param e error exception
      */
-    public void warning(String message, Exception e) { plugin.getLogger().log(Level.WARNING, ASCIIYellow + message, e); }
+    public void warning(String message, Exception e) { plugin.getLogger().log(Level.WARNING, ASCIIYellow + message + ASCIIReset, e); }
 
     /**
      * Error message output.
      * @param message the contents of the message.
      * @param e error exception
      */
-    public void error(String message, Exception e) { plugin.getLogger().log(Level.SEVERE, ASCIIRed + message, e); }
+    public void error(String message, Exception e) { plugin.getLogger().log(Level.SEVERE, ASCIIRed + message + ASCIIReset, e); }
 
     /**
      * Debug message output.
@@ -62,7 +62,7 @@ public final class RedLog {
      */
     public void debug(String message) {
         if (isDebug)
-            plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message);
+            plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message + ASCIIReset);
     }
     /**
      * Debug message output.

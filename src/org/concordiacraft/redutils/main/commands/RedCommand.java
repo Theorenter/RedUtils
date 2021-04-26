@@ -1,4 +1,4 @@
-package commands;
+package org.concordiacraft.redutils.main.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-public abstract class BasedCommand implements CommandExecutor {
+public abstract class RedCommand implements CommandExecutor {
     protected HashMap<String, String> commands = new HashMap<>();
 
     protected String[] args;

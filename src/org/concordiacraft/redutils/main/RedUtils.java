@@ -34,5 +34,4 @@ public class RedUtils extends JavaPlugin implements RedPlugin {
     public static RedPlugin getPlugin() {
         return RedUtils.getPlugin(RedUtils.class);
     }
-
 }

@@ -6,7 +6,6 @@ import org.concordiacraft.redutils.main.RedPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 /**
  * @author Theorenter
@@ -37,7 +36,7 @@ public abstract class ConfigAbstractSetup {
 
         customFile = new File(plugin.getDataFolder(),  fullFileName);
         if (!customFile.exists()) {
-            plugin.getLogger().severe(fullFileName + " was not found. Create new ones.");
+            plugin.getRedLogger().warning(fullFileName + " was not found. Create new ones.");
             customFile.getParentFile().mkdirs();
             plugin.saveResource(fullFileName, false);
         }
