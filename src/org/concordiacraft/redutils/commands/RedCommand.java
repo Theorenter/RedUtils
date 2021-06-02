@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.concordiacraft.redutils.main.RedUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -31,7 +32,7 @@ public abstract class RedCommand implements CommandExecutor {
 
         this.args = args;
         this.sender = sender;
-        if (args[0].equalsIgnoreCase("help")) {
+        if ((args.length == 0) || (args[0].equalsIgnoreCase("help"))) {
             showHelp();
             return true;
         }
