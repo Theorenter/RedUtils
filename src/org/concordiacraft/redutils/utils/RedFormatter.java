@@ -1,8 +1,9 @@
-package org.concordiacraft.redutils.main.utils;
+package org.concordiacraft.redutils.utils;
 
 import net.md_5.bungee.api.ChatColor;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,11 +47,11 @@ public final class RedFormatter {
     }
     /**
      * Gets a strings and returns it in the processed form.
-     * @param strs the array of strings to be processed.
+     * @param strings the list of strings to be processed.
      * @return array of processed strings.
      */
-    public static String[] format(String... strs) {
-        for (String str : strs) {
+    public static List<String> format(List<String> strings) {
+        for (String str : strings) {
             Matcher matcher = hexColor.matcher(str);
             while (matcher.find()) {
                 String fullColor = str.substring(matcher.start(), matcher.end());
@@ -64,6 +65,6 @@ public final class RedFormatter {
                 while (str.contains(k)) { str = str.replace(k, v); }
             }
         }
-        return strs;
+        return strings;
     }
 }

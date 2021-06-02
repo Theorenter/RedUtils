@@ -1,7 +1,7 @@
 package org.concordiacraft.redutils.main;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.concordiacraft.redutils.main.utils.RedLog;
+import org.concordiacraft.redutils.utils.RedLog;
 
 public class RedUtils extends JavaPlugin implements RedPlugin {
 

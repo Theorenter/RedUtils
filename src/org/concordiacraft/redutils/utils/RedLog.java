@@ -1,4 +1,4 @@
-package org.concordiacraft.redutils.main.utils;
+package org.concordiacraft.redutils.utils;
 
 import org.concordiacraft.redutils.main.RedPlugin;
 import org.fusesource.jansi.Ansi;
@@ -72,6 +72,22 @@ public final class RedLog {
     public void debug(String message, Exception e) {
         if (isDebug)
             plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message, e);
+    }
+
+    /**
+     * Output of a message that is stylized as a debug, but does not perform verification at the same time.
+     * @param message the contents of the message.
+     */
+    public void debugStyled(String message) {
+        plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message + ASCIIReset);
+    }
+    /**
+     * Output of a message that is stylized as a debug, but does not perform verification at the same time.
+     * @param message the contents of the message.
+     * @param e error exception
+     */
+    public void debugStyled(String message, Exception e) {
+        plugin.getLogger().log(Level.INFO,"["+ ASCIICyan +"DEBUG"+ ASCIIWhite +"] " + message, e);
     }
 
     // ASCII colors

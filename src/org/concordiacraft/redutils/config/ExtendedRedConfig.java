@@ -1,4 +1,4 @@
-package org.concordiacraft.redutils.main.config;
+package org.concordiacraft.redutils.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,28 +11,28 @@ import java.io.IOException;
  * @author Theorenter
  * Creating an abstract configuration for plugins of the RedProject family.
  */
-public abstract class ConfigAbstractSetup {
+public abstract class ExtendedRedConfig {
 
     private static RedPlugin plugin;
 
     // CustomConfig fields
-    protected static File customFile;
-    protected static FileConfiguration customConfig;
+    protected File customFile;
+    protected FileConfiguration customConfig;
 
     // Name of .yml that we will work with
-    protected static String fullFileName;
+    protected String fullFileName;
 
     /**
      * Custom config's constructor.
      * @param plugin plugin for which the configuration file will be created.
      * @param fullFileName full name (including path) where will the file be located.
      */
-     protected ConfigAbstractSetup(RedPlugin plugin, String fullFileName) {
+     protected ExtendedRedConfig(RedPlugin plugin, String fullFileName) {
 
-         ConfigAbstractSetup.plugin = plugin;
+         ExtendedRedConfig.plugin = plugin;
 
         // File Creation
-        ConfigAbstractSetup.fullFileName = fullFileName;
+        this.fullFileName = fullFileName;
 
         customFile = new File(plugin.getDataFolder(),  fullFileName);
         if (!customFile.exists()) {
@@ -45,21 +45,16 @@ public abstract class ConfigAbstractSetup {
         customConfig = YamlConfiguration.loadConfiguration(customFile);
     }
 
-    public static void saveCustomConfig() {
+    public void saveConfig() {
         try {
-            customConfig.save(customFile);
+            this.customConfig.save(customFile);
             plugin.getRedLogger().info(fullFileName + " has been saved successfully!");
         } catch (IOException e) {
             plugin.getRedLogger().error("Could not save the " + fullFileName, e);
         }
     }
 
-    public static void reloadCustomConfig() {
+    public void reloadConfig() {
         customConfig = YamlConfiguration.loadConfiguration(customFile);
-    }
-
-    // Config Getter
-    public static FileConfiguration getCustomConfig() {
-        return customConfig;
     }
 }

@@ -1,5 +1,6 @@
-package org.concordiacraft.redutils.main.commands;
+package org.concordiacraft.redutils.commands;
 
+import com.sun.istack.internal.NotNull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,6 +9,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+/**
+ * @author Nicekita
+ */
 public abstract class RedCommand implements CommandExecutor {
     protected HashMap<String, String> commands = new HashMap<>();
 
@@ -17,6 +21,8 @@ public abstract class RedCommand implements CommandExecutor {
     protected String command = "fixmewhatever";
     protected String displayName = "fixmewhatever";
     public abstract void init();
+
+    @NotNull
     public abstract void showHelp();
 
     @Override
