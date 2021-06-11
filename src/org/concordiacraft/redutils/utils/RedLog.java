@@ -20,7 +20,7 @@ public final class RedLog {
 
     public void showPluginTitle() {
         plugin.getLogger().log(Level.INFO, "");
-        plugin.getLogger().log(Level.INFO, "===[ " + ASCIIRed + plugin.getName() + ASCIIWhite + " ]===");
+        plugin.getLogger().log(Level.INFO, "===[ " + ASCIIRed + plugin.getName() + " — " + plugin.getDescription().getVersion() + ASCIIWhite + " ]===");
         plugin.getLogger().log(Level.INFO, "");
     }
 

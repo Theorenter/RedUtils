@@ -15,6 +15,11 @@ public interface RedPlugin extends Plugin {
     boolean isDebug();
 
     /**
+     * Sets whether the plugin is in debug mode or not
+     */
+    void setDebug(boolean debugStatus);
+
+    /**
      * Universal logger for RedProject plugins.
      * @return RedLogger.
      */
