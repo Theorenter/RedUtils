@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 /**
- * @author Nicekita, Theorenter
+ * @author Nicekita
  */
 public abstract class RedCommand implements CommandExecutor {
     protected HashMap<String, String> commands = new HashMap<>();
@@ -32,24 +32,14 @@ public abstract class RedCommand implements CommandExecutor {
 
         this.args = args;
         this.sender = sender;
-
-        RedUtils.getPlugin().getRedLogger().debug("Command args: ");
-        RedUtils.getPlugin().getRedLogger().debug(args.toString());
-
         if ((args.length == 0) || (args[0].equalsIgnoreCase("help"))) {
             showHelp();
             return true;
         }
-        RedUtils.getPlugin().getRedLogger().debug("commands.keys: ");
         for (String c : commands.keySet()) {
-            RedUtils.getPlugin().getRedLogger().debug(c);
             if (c.equalsIgnoreCase(args[0])) {
                 try {
-                    String com = args[0];
-                    if (args[0].contains(" ")) {
-                        com = args[0].replaceAll(" ", "_");
-                    }
-                    Method method = this.getClass().getMethod(com.toLowerCase()+"CMD");
+                    Method method = this.getClass().getMethod(args[0].toLowerCase()+"CMD");
                     try {
                         method.invoke(this);
                         return true;
