@@ -57,7 +57,7 @@ public abstract class RedCommand implements CommandExecutor {
                 }
             }
         }
-        return false;
+        return true;
     }
     public void showBasicHelp() {
         //todo Basic help info
