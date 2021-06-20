@@ -1,7 +1,7 @@
 package org.concordiacraft.redutils.main;
 
 import org.bukkit.plugin.Plugin;
-import org.concordiacraft.redutils.utils.RedLog;
+import org.concordiacraft.redutils.util.RedLog;
 
 /**
  * @author Theorenter
@@ -23,5 +23,5 @@ public interface RedPlugin extends Plugin {
      * Universal logger for RedProject plugins.
      * @return RedLogger.
      */
-    RedLog getRedLogger();
+    RedLog log();
 }

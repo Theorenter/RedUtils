@@ -1,4 +1,4 @@
-package org.concordiacraft.redutils.utils;
+package org.concordiacraft.redutils.util;
 
 import org.bukkit.configuration.ConfigurationSection;
 

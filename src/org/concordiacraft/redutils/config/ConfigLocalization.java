@@ -2,7 +2,7 @@ package org.concordiacraft.redutils.config;
 
 
 import org.concordiacraft.redutils.main.RedUtils;
-import org.concordiacraft.redutils.utils.RedFormatter;
+import org.concordiacraft.redutils.util.RedFormatter;
 
 /**
  * @author Theorenter
@@ -22,7 +22,7 @@ public final class ConfigLocalization extends ExtendedRedConfig {
         String str = this.customConfig.getString(path);
         if (str != null) { return str; }
         else {
-            RedUtils.getPlugin().getRedLogger().warning("The line under ID \"" + path + "\" was not found.");
+            RedUtils.getPlugin().log().warning("The line under ID \"" + path + "\" was not found.");
             return "The line under ID \"" + path + "\" was not found.";
         }
     }

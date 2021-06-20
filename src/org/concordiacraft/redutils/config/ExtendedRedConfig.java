@@ -36,8 +36,7 @@ public abstract class ExtendedRedConfig {
 
         customFile = new File(plugin.getDataFolder(),  fullFileName);
         if (!customFile.exists()) {
-            plugin.getRedLogger().warning(fullFileName + " was not found. Create new ones.");
-            customFile.getParentFile().mkdirs();
+            plugin.log().warning(fullFileName + " was not found. Create new ones.");
             plugin.saveResource(fullFileName, false);
         }
 
@@ -48,9 +47,9 @@ public abstract class ExtendedRedConfig {
     public void saveConfig() {
         try {
             this.customConfig.save(customFile);
-            plugin.getRedLogger().info(fullFileName + " has been saved successfully!");
+            plugin.log().info(fullFileName + " has been saved successfully!");
         } catch (IOException e) {
-            plugin.getRedLogger().error("Could not save the " + fullFileName, e);
+            plugin.log().error("Could not save the " + fullFileName, e);
         }
     }
 

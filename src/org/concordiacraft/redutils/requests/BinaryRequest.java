@@ -1,8 +1,5 @@
 package org.concordiacraft.redutils.requests;
 
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.entity.Player;
-
 /**
  * @author Theorenter
  * A request where the recipient can specify one of two possible values.
@@ -10,9 +7,8 @@ import org.bukkit.entity.Player;
 public abstract class BinaryRequest implements Request {
 
     // fields
-    protected final Player requestSender;
-    protected final Player requestReceiver;
-    protected final RequestType type;
+    protected final Requestable requestSender;
+    protected final Requestable requestReceiver;
 
     /**
      * What should happen if player accept request.
@@ -31,24 +27,22 @@ public abstract class BinaryRequest implements Request {
 
     /**
      * Request constructor.
-     * @param requestSender is who sends the request.
-     * @param requestReceiver is who get the request.
+     * @param requestSender which sends the request
+     * @param requestReceiver which get the request
      */
-    public BinaryRequest(Player requestSender, Player requestReceiver, RequestType type) {
+    public BinaryRequest(Requestable requestSender, Requestable requestReceiver, RequestType type) {
         this.requestSender = requestSender;
         this.requestReceiver = requestReceiver;
-        this.type = type;
-
-        //requestReceiver.setRequest(this);
-        //requestSender.setRequest(this);
     }
 
     @Override
-    public Player getRequestSender() { return requestSender; }
+    public Requestable getRequestSender() { return requestSender; }
 
     @Override
-    public Player getRequestReceiver() { return requestReceiver; }
+    public Requestable getRequestReceiver() { return requestReceiver; }
 
     @Override
-    public RequestType getRequestType() { return type; }
+    public int getID() {
+        return requestReceiver.getRequests().indexOf(this);
+    }
 }

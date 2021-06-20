@@ -1,10 +1,9 @@
 package org.concordiacraft.redutils.commands;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.concordiacraft.redutils.main.RedUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,11 +22,10 @@ public abstract class RedCommand implements CommandExecutor {
     protected String displayName = "fixmewhatever";
     public abstract void init();
 
-    @NotNull
     public abstract void showHelp();
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String commandLabel, String[] args) {
         init();
 
         this.args = args;

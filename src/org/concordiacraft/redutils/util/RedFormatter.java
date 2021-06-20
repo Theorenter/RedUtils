@@ -1,4 +1,4 @@
-package org.concordiacraft.redutils.utils;
+package org.concordiacraft.redutils.util;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public final class RedFormatter {
     private static final Pattern hexColor = Pattern.compile("<#[a-fA-F0-9]{6}>");
-    private static final Map<String, String> formatMap = new HashMap<String, String>() {{
+    private static final Map<String, String> formatMap = new HashMap<>() {{
         put("<reset>", "§r");
         put("<bold>", "§l");
         put("<italic>", "§o");

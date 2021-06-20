@@ -7,16 +7,19 @@ import org.bukkit.entity.Player;
  * Request as a request, what else can I say?
  */
 public interface Request {
+
     /**
-     * @return entity who send request.
+     * @return entity which sends request
      */
-    Player getRequestSender();
+    Requestable getRequestSender();
+
     /**
-     * @return entity who receive request.
+     * @return entity which receives request
      */
-    Player getRequestReceiver();
+    Requestable getRequestReceiver();
+
     /**
-     * @return entity who receive request.
+     * @return numeric identifier of the request
      */
-    RequestType getRequestType();
+    int getID();
 }

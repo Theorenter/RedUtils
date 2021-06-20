@@ -3,7 +3,7 @@ package org.concordiacraft.redutils.main;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.concordiacraft.redutils.config.ConfigDefault;
 import org.concordiacraft.redutils.config.ConfigLocalization;
-import org.concordiacraft.redutils.utils.RedLog;
+import org.concordiacraft.redutils.util.RedLog;
 
 import java.io.File;
 
@@ -40,17 +40,28 @@ public class RedUtils extends JavaPlugin implements RedPlugin {
     }
 
     @Override
-    public boolean isDebug() { return debug; }
+    public boolean isDebug() {
+        return debug;
+    }
+
     @Override
-    public void setDebug(boolean debugStatus) { debug = debugStatus; }
-    @Override
-    public RedLog getRedLogger() {
+    public void setDebug(boolean debugStatus) {
+        debug = debugStatus;
+    }
+
+    public RedLog log() {
         return rLog;
     }
 
     public static RedPlugin getPlugin() {
         return RedUtils.getPlugin(RedUtils.class);
     }
-    public static ConfigDefault getConfigDefault() { return config; }
-    public static ConfigLocalization getLocalization() { return localization; }
+
+    public static ConfigDefault getConfigDefault() {
+        return config;
+    }
+
+    public static ConfigLocalization getLocalization() {
+        return localization;
+    }
 }
