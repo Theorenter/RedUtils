@@ -27,7 +27,6 @@ public abstract class RedCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command cmd, @Nonnull String commandLabel, String[] args) {
         init();
-
         this.args = args;
         this.sender = sender;
         if ((args.length == 0) || (args[0].equalsIgnoreCase("help"))) {
