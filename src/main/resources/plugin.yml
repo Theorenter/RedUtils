@@ -1,0 +1,11 @@
+name: RedUtils
+version: ${project.version}
+authors: [ Theorenter, Nicekita ]
+description: >
+  The technical plugin is necessary for the operation of other
+  plugins, such as RedRealms, RedConomy, RedItems, etc.
+website: ${project.url}
+
+main: org.roterbund.redutils.main.RedUtils
+api-version: 1.17
+loadbefore: [ RedRealms, RedConomy, RedItems, ResEssentails ]
