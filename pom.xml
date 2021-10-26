@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -10,14 +11,13 @@
     <packaging>jar</packaging>
 
     <name>RedUtils</name>
-
     <description>Technical plugin required for other plugins of the RedPlugins family to work</description>
+    <url>https://concordiacraft.org</url>
+
     <properties>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>7</maven.compiler.release>
     </properties>
-    <url>https://concordiacraft.org</url>
 
     <build>
         <plugins>

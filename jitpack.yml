@@ -1,0 +1,10 @@
+before_install:
+  # Make sure SDKMAN is addressable and up-to-date.
+  - source "$HOME/.sdkman/bin/sdkman-init.sh"
+  - sdk update
+  # Java version
+  - sdk install java 16.0.0-tem
+  - sdk use java 16.0.0-tem
+  # Maven using
+  - sdk install maven 3.8.1
+  - sdk use maven 3.8.1
