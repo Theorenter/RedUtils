@@ -7,5 +7,5 @@ description: >
 website: ${project.url}
 
 main: org.roterbund.redutils.main.RedUtils
-api-version: 1.17
+api-version: ${project.bukkitAPIVersion}
 loadbefore: [ RedRealms, RedConomy, RedItems, ResEssentails ]
