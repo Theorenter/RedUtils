@@ -27,6 +27,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -42,7 +43,7 @@
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <outputDirectory>D:/ConcordiaCraft/ConcordiaCraft - 1.17.1/plugins</outputDirectory>
-                            <finalName>${project.name}${project.version}</finalName>
+                            <finalName>${project.name}</finalName>
                             <filters>
                                 <filter>
                                     <artifact>org.roterbund</artifact>
