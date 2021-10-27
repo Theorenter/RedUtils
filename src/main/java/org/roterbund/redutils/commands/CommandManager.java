@@ -18,17 +18,18 @@ import java.util.Map;
 /**
  * Command management system
  */
+@SuppressWarnings("unused")
 public final class CommandManager {
 
     private final RedPlugin plugin;
     private final Map<String, Command> knownCommands;
-    private String dontHavePermissionMsg = "You don't have enough permissions to use this command!";
+    private String permissionUniversalMsg = "You don't have enough permissions to use this command!";
 
     /**
      * Constructor
      * @param plugin The plugin for which the team manager is being created
      */
-    public CommandManager(RedPlugin plugin) {
+    public CommandManager(@NotNull final RedPlugin plugin) {
         this.plugin = plugin;
 
         Map<String, Command> serverKnownCommands = null;
@@ -153,7 +154,6 @@ public final class CommandManager {
     /**
      * Registration of all commands and sub-commands from Plugin.yml
      */
-    @SuppressWarnings("unused")
     public void registerAllCommands() {
         // RedCommands register
         Map<String, Object> redCmdMap = plugin.getDescription().getCommands().get("redcommands");
@@ -170,16 +170,23 @@ public final class CommandManager {
      *
      * @param name The command's name to delete
      */
-    @SuppressWarnings("unused")
     public void removeCommand(@NotNull final String name) {
         this.knownCommands.remove(name);
     }
 
     /**
+     *
+     * @param permissionUniversalMsg A link to the localization string or a message to the user that he does not have enough rights to use the command
+     */
+    public void setPermissionMsg(String permissionUniversalMsg) {
+        this.permissionUniversalMsg = permissionUniversalMsg;
+    }
+
+    /**
      * @return A message that the user does not have enough rights to use the command
      */
-    public String getDontHavePermissionMsg() {
-        return dontHavePermissionMsg;
+    public String getPermissionMsg() {
+        return permissionUniversalMsg;
     }
 
     /**

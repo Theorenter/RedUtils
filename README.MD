@@ -57,36 +57,8 @@ depend: [ RedUtils ]
 ````
 
 </li><br>
-        <li>Имплементируйте RedPlugin в основной класс Вашего плагина и пропишите псевдореализацию наследуемых методов:
 
-````java
-public final class MyPlugin extends JavaPlugin implements RedPlugin {
-    
-    // Псевдореализация заключается в том, что методы
-    // Возвращаются null вместо запрашиваемых объектов.
-    
-    // ...
-    
-    @Override
-    public boolean isDebug() {
-        return false;
-    }
-
-    @Override
-    public RedLocalization getLocalization() {
-        return null;
-    }
-
-    @Override
-    public RedConfiguration getRConfig() {
-        return null;
-    }
-    // ...
-}
-
-````
-
-<li>Создайте в основном классе Вашего плагина поле класса <code>RedUtilsAPI</code>:
+<li>Создайте в основном классе Вашего плагина поле класса <code>RedUtilsAPI</code> и имплементируйте интерфейс <code>RedPlugin</code>:
 
 ````java
 public final class MyPlugin extends JavaPlugin implements RedPlugin {
@@ -143,7 +115,37 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
     // ...
 }
 ````
+
+<li>Пропишите возврат менеджеров в наследных методах:
+
+````java
+public final class MyPlugin extends JavaPlugin implements RedPlugin {
+    // ...
+    
+    @Override
+    public boolean isDebug() {
+        // Здесь, по-хорошему, должно браться
+        // значение из конфигурации
+        return false;
+    }
+
+    @Override
+    public RedLocalization getLocalization() {
+        return null;
+    }
+
+    @Override
+    public RedConfiguration getRConfig() {
+        return null;
+    }
+    
+    
+    // ...
+}
+````
+
 </li><br>
+
 <li><a href="https://github.com/Theorenter/RedUtils/releases">Скачайте</a> и закиньте в папку <code>plugins</code> Вашего сервера версию <code>RedUtils.jar</code>, которая указана Вами в зависимости <code>pom.xml</code>.</li><br>
 
 <li><b>Поздравляю</b>, всё сделано успешно! Теперь Вы можете запустить свой плагин и взаимодействовать в нём с <code>RedUtilsAPI</code></li>

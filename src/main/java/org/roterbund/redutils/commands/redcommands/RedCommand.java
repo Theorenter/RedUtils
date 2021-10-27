@@ -41,7 +41,7 @@ public abstract class RedCommand extends Command implements SubCommandContainer 
         if (testPermissionSilent(target))
             return true;
 
-        String errorMessage = cmdManager.getDontHavePermissionMsg();
+        String errorMessage = cmdManager.getPermissionMsg();
 
         if (target instanceof Player targetPlayer) {
 
@@ -52,7 +52,7 @@ public abstract class RedCommand extends Command implements SubCommandContainer 
                     errorMessage = cmdManager.getPlugin().getLocalization().getString(targetPlayer, getPermissionMessage());
                 }
             } else {
-                errorMessage = cmdManager.getDontHavePermissionMsg();
+                errorMessage = cmdManager.getPermissionMsg();
             }
             cmdManager.getPlugin().getNotificationManager().sendPlayerError(targetPlayer, errorMessage);
         } else {
