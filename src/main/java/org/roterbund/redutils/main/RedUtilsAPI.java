@@ -57,10 +57,9 @@ public final class RedUtilsAPI {
      * Creates a RedLogger for the plugin
      *
      * @param plugin he RedProject plugin for which RedLogger is being created
-     * @param isDebug True if the logger will display a debug message and false if not
      * @return The RedLogger
      */
-    public RedLogger createRedLogger(@NotNull final RedPlugin plugin, final boolean isDebug) {
+    public RedLogger createRedLogger(@NotNull final RedPlugin plugin) {
         return new RedLogger(plugin);
     }
 
