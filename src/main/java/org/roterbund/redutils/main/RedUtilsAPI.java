@@ -75,11 +75,8 @@ public final class RedUtilsAPI {
 
     /**
      * Creates a notification management system
-     *
-     * @param plugin The plugin for which notification manager is being created
-     * @return The notification manager
-     */
-    public NotificationManager createNotificationManager(@NotNull final Plugin plugin) {
-        return new NotificationManager(plugin);
+     **/
+    public NotificationManager createNotificationManager() {
+        return new NotificationManager();
     }
 }

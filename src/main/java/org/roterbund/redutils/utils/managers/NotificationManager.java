@@ -2,25 +2,35 @@ package org.roterbund.redutils.utils.managers;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 /**
  * Manager for sender notifications
  */
+@SuppressWarnings("unused")
 public final class NotificationManager {
 
-    private final Plugin plugin;
+    private String errorSoundName = "block.note_block.didgeridoo";
+    private float errorSoundPitch = 1.0f;
+    private float errorSoundVolume = 1.0f;
 
     /**
-     * Creates notification manager for the plugin
-     *
-     * @param plugin The plugin to which the configuration refers
+     * Creates notification manager
      */
-    public NotificationManager(@NotNull final Plugin plugin) {
-        this.plugin = plugin;
+    public NotificationManager() {
+    }
+
+    /**
+     * Sets which sound will be played to the user if he encounters an error
+     *
+     * @param name The sound name
+     * @param pitch The sound pitch
+     * @param volume The sound volume
+     */
+    public void setErrorSound(@NotNull final String name, final float pitch, final float volume) {
+        errorSoundName = name;
+        errorSoundPitch = pitch;
+        errorSoundVolume = volume;
     }
 
     /**
@@ -31,11 +41,7 @@ public final class NotificationManager {
      */
     public void sendPlayerError(@NotNull final Player player, @NotNull final String message) {
         player.sendRawMessage(message);
-        player.playSound(player.getLocation(),
-                Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.name")),
-                Float.parseFloat(Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.pitch"))),
-                Float.parseFloat(Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.volume")))
-        );
+        player.playSound(player.getLocation(), errorSoundName, errorSoundPitch, errorSoundVolume);
     }
 
     /**
@@ -44,13 +50,8 @@ public final class NotificationManager {
      * @param player The recipient of the error notification
      * @param baseComponent The content of the notification that will be displayed in the chat
      */
-    @SuppressWarnings("unused")
     public void sendPlayerError(@NotNull final Player player, @NotNull final BaseComponent baseComponent) {
         player.spigot().sendMessage(baseComponent);
-        player.playSound(player.getLocation(),
-                Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.name")),
-                Float.parseFloat(Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.pitch"))),
-                Float.parseFloat(Objects.requireNonNull(plugin.getConfig().getString("notifications.error-sound.volume")))
-        );
+        player.playSound(player.getLocation(), errorSoundName, errorSoundPitch, errorSoundVolume);
     }
 }
