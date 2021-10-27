@@ -12,9 +12,11 @@ import java.util.logging.Level;
 @SuppressWarnings("unused")
 public final class RedLogger {
     private final RedPlugin plugin;
+    private boolean debug;
 
-    public RedLogger(@NotNull final RedPlugin plugin) {
+    public RedLogger(@NotNull final RedPlugin plugin, boolean debug) {
         this.plugin = plugin;
+        this.debug = debug;
     }
 
     /**
@@ -62,7 +64,7 @@ public final class RedLogger {
      * @param message the contents of the message
      */
     public void debug(String message) {
-        if (plugin.isDebug())
+        if (debug)
             plugin.getLogger().log(Level.INFO,"[" + B_CYAN + "DEBUG" + RESET + "] " + message);
     }
     /**
@@ -71,7 +73,7 @@ public final class RedLogger {
      * @param e error exception
      */
     public void debug(String message, Throwable e) {
-        if (plugin.isDebug())
+        if (debug)
             plugin.getLogger().log(Level.INFO,"[" + B_CYAN + "DEBUG" + RESET + "] " + message, e);
     }
 

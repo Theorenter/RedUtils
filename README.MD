@@ -97,7 +97,7 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
         }
 
         // Managers init
-        redLogger = redUtilsAPI.createRedLogger(this);
+        redLogger = redUtilsAPI.createRedLogger(this, true);
         cmdManager = redUtilsAPI.createCommandManager(this);
         ntfManager = redUtilsAPI.createNotificationManager();
     }
@@ -108,21 +108,7 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
     }
 
     @Override
-    public boolean isDebug() {
-        // По-хорошему, значение, возвращаемое данным
-        // методом, должно браться из конфигурации плагина
-        return true;
-    }
-
-    @Override
     public RedLocalization getLocalization() {
-        // Если этот метод будет возвращать null,
-        // то ничего не сломается
-        return null;
-    }
-
-    @Override
-    public RedConfiguration getRConfig() {
         // Если этот метод будет возвращать null,
         // то ничего не сломается
         return null;

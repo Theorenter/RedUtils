@@ -56,11 +56,12 @@ public final class RedUtilsAPI {
     /**
      * Creates a RedLogger for the plugin
      *
-     * @param plugin he RedProject plugin for which RedLogger is being created
+     * @param plugin The RedProject plugin for which RedLogger is being created
+     * @param debug Boolean variable responsible for displaying debug information by the logger
      * @return The RedLogger
      */
-    public RedLogger createRedLogger(@NotNull final RedPlugin plugin) {
-        return new RedLogger(plugin);
+    public RedLogger createRedLogger(@NotNull final RedPlugin plugin, boolean debug) {
+        return new RedLogger(plugin, debug);
     }
 
     /**
