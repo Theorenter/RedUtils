@@ -50,7 +50,7 @@ depend: [ RedUtils ]
   <dependency>
     <groupId>com.github.Theorenter</groupId>
     <artifactId>RedUtils</artifactId>
-    <version>0.2.0-indev</version>
+    <version>0.2.1-indev</version>
     <scope>provided</scope>
   </dependency>
 </dependencies>
@@ -69,12 +69,19 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
 ````
 </li><br>
 
-<li>Инициализируйте RedUtilsAPI и добавьте проверку наличия плагина RedUtils в методе <code>onEnable()</code> основного класса:
+<li>Инициализируйте <code>RedUtilsAPI</code> и добавьте проверку наличия плагина RedUtils в методе <code>onEnable()</code> основного класса. Затем объявите и инициализируйте основные менеджеры и реализуйте наследуемые методы:
 
 ````java
 public final class MyPlugin extends JavaPlugin implements RedPlugin {
-    // ...
+
+    private RedUtilsAPI redUtilsAPI;
     
+    private RedLogger redLogger;
+    private CommandManager cmdManager;
+    private NotificationManager ntfManager;
+    
+    // Метод, содержащий инструкции при запуске Вашего плагина
+    @Override
     public void onEnable() {
 
         // RedUtils API check
@@ -88,62 +95,52 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
             setEnabled(false);
             return;
         }
-    }
-    // ...
-}
-````
-</li><br>
 
-<li>Объявите и инициализируйте основные менеджеры:
-
-````java
-public final class MyPlugin extends JavaPlugin implements RedPlugin {
-    // ...
-    private RedLogger redLogger;
-    private CommandManager cmdManager;
-    private NotificationManager ntfManager;
-    
-    public void onEnable() {
-        // ...
-        
         // Managers init
         redLogger = redUtilsAPI.createRedLogger(this);
         cmdManager = redUtilsAPI.createCommandManager(this);
-        ntfManager = redUtilsAPI.createNotificationManager(this);
-    
+        ntfManager = redUtilsAPI.createNotificationManager();
     }
-    // ...
-}
-````
-
-<li>Пропишите возврат менеджеров в наследных методах:
-
-````java
-public final class MyPlugin extends JavaPlugin implements RedPlugin {
-    // ...
     
+    // Метод, содержащий инструкции при выключении Вашего плагина
+    @Override
+    public void onDisable() {
+    }
+
     @Override
     public boolean isDebug() {
-        // Здесь, по-хорошему, должно браться
-        // значение из конфигурации
-        return false;
+        // По-хорошему, значение, возвращаемое данным
+        // методом, должно браться из конфигурации плагина
+        return true;
     }
 
     @Override
     public RedLocalization getLocalization() {
+        // Если этот метод будет возвращать null,
+        // то ничего не сломается
         return null;
     }
 
     @Override
     public RedConfiguration getRConfig() {
+        // Если этот метод будет возвращать null,
+        // то ничего не сломается
         return null;
     }
-    
-    
-    // ...
+
+    @Override
+    public RedLogger getRLogger() {
+        // Просто возвращаем логгер
+        return redLogger;
+    }
+
+    @Override
+    public NotificationManager getNotificationManager() {
+        // Просто возвращаем менеджер оповещений
+        return ntfManager;
+    }
 }
 ````
-
 </li><br>
 
 <li><a href="https://github.com/Theorenter/RedUtils/releases">Скачайте</a> и закиньте в папку <code>plugins</code> Вашего сервера версию <code>RedUtils.jar</code>, которая указана Вами в зависимости <code>pom.xml</code>.</li><br>
