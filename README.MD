@@ -9,7 +9,7 @@
 -----
 <H2>Цель плагина</H3>
 
-<p>Данный Spigot плагин <b><i>предназначен для внутреннего использования</i></b> и представляет собой иснтрументарий для реализации ряда задач:</p>
+<p>Данный Spigot плагин <b><i>предназначен для внутреннего использования</i></b> и представляет собой инструментарий для реализации ряда задач:</p>
 <ul>
     <li>Обработка HEX-цветов;</li>
     <li>Реализация продвинутых команд;</li>
@@ -121,8 +121,31 @@ public final class MyPlugin extends JavaPlugin implements RedPlugin {
 }
 ````
 </li><br>
+
+<li>Объявите и инициализируйте основные менеджеры:
+
+````java
+public final class MyPlugin extends JavaPlugin implements RedPlugin {
+    // ...
+    private RedLogger redLogger;
+    private CommandManager cmdManager;
+    private NotificationManager ntfManager;
+    
+    public void onEnable() {
+        // ...
+        
+        // Managers init
+        redLogger = redUtilsAPI.createRedLogger(this);
+        cmdManager = redUtilsAPI.createCommandManager(this);
+        ntfManager = redUtilsAPI.createNotificationManager(this);
+    
+    }
+    // ...
+}
+````
+</li><br>
 <li><a href="https://github.com/Theorenter/RedUtils/releases">Скачайте</a> и закиньте в папку <code>plugins</code> Вашего сервера версию <code>RedUtils.jar</code>, которая указана Вами в зависимости <code>pom.xml</code>.</li><br>
 
-<li><b>Поздравляю</b>, всё сделано успешно и теперь вы можете запустить свой плагин с установленной зависимостью от RedUtils</li>
+<li><b>Поздравляю</b>, всё сделано успешно! Теперь Вы можете запустить свой плагин и взаимодействовать в нём с <code>RedUtilsAPI</code></li>
     </ol>
 </details>

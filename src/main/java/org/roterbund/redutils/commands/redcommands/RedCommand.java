@@ -41,17 +41,22 @@ public abstract class RedCommand extends Command implements SubCommandContainer 
         if (testPermissionSilent(target))
             return true;
 
-        if (target instanceof Player targetPlayer) {
-            String errorMessage;
+        String errorMessage = cmdManager.getDontHavePermissionMsg();
 
-            if (getPermissionMessage() == null) {
-                errorMessage = cmdManager.getPlugin().getLocalization().getString(targetPlayer, "message.error.dont-have-permission-to-use-command");
+        if (target instanceof Player targetPlayer) {
+
+            if (cmdManager.getPlugin().getLocalization() != null) {
+                if (getPermissionMessage() == null) {
+                    errorMessage = cmdManager.getPlugin().getLocalization().getString(targetPlayer, errorMessage);
+                } else {
+                    errorMessage = cmdManager.getPlugin().getLocalization().getString(targetPlayer, getPermissionMessage());
+                }
             } else {
-                errorMessage = cmdManager.getPlugin().getLocalization().getString(targetPlayer, getPermissionMessage());
+                errorMessage = cmdManager.getDontHavePermissionMsg();
             }
             cmdManager.getPlugin().getNotificationManager().sendPlayerError(targetPlayer, errorMessage);
         } else {
-            target.sendMessage("You don't have enough permissions to use this command!");
+            target.sendMessage(errorMessage);
         }
         return false;
     }

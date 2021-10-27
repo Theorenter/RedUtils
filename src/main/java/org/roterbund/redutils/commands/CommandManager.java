@@ -22,6 +22,7 @@ public final class CommandManager {
 
     private final RedPlugin plugin;
     private final Map<String, Command> knownCommands;
+    private String dontHavePermissionMsg = "You don't have enough permissions to use this command!";
 
     /**
      * Constructor
@@ -172,6 +173,13 @@ public final class CommandManager {
     @SuppressWarnings("unused")
     public void removeCommand(@NotNull final String name) {
         this.knownCommands.remove(name);
+    }
+
+    /**
+     * @return A message that the user does not have enough rights to use the command
+     */
+    public String getDontHavePermissionMsg() {
+        return dontHavePermissionMsg;
     }
 
     /**
