@@ -2,7 +2,6 @@ package org.roterbund.redutils.main;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.roterbund.redutils.files.RedConfiguration;
 import org.roterbund.redutils.files.localization.RedLocalization;
 import org.roterbund.redutils.utils.RedLogger;
 import org.roterbund.redutils.utils.managers.NotificationManager;
@@ -21,10 +20,11 @@ public final class RedUtils extends JavaPlugin implements RedPlugin {
      */
     @Override
     public void onEnable() {
-        instance = this;
 
         // Api
         api = new RedUtilsAPI();
+        instance = this;
+
         getLogger().info("The RedUtilsAPI was loaded successfully");
 
         getLogger().info(getDescription().getName() + " v" + getDescription().getVersion() + " was enabled successfully");
@@ -58,16 +58,6 @@ public final class RedUtils extends JavaPlugin implements RedPlugin {
     @Override
     public RedLogger getRLogger() {
         return null;
-    }
-
-    @Override
-    public RedConfiguration getRConfig() {
-        return null;
-    }
-
-    @Override
-    public boolean isDebug() {
-        return false;
     }
 
     @Override
