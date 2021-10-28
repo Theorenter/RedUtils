@@ -20,14 +20,12 @@ public final class RedUtils extends JavaPlugin implements RedPlugin {
      */
     @Override
     public void onEnable() {
-
-        // Api
         api = new RedUtilsAPI();
-        instance = this;
 
         getLogger().info("The RedUtilsAPI was loaded successfully");
-
         getLogger().info(getDescription().getName() + " v" + getDescription().getVersion() + " was enabled successfully");
+
+        instance = this;
     }
 
     @Override
